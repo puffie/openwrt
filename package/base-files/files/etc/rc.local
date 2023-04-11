@@ -1,4 +1,9 @@
 # Put your custom commands here that should be executed once
 # the system init finished. By default this file does nothing.
 
+echo "Wait for nrc7292 to fully load"
+sleep 5
+echo "Call /sbin/wifi up"
+/sbin/wifi up
+
 exit 0

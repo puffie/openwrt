@@ -12,3 +12,28 @@ include distroconfig.txt
 
 [all]
 # Place your custom settings here.
+
+## enable_uart
+##     Enables or disables uart pin multiplexing
+##     Raspberry Pi 1/2: if unset, uart is enabled by default
+##     Raspberry Pi 3: if unset uart is disabled by default
+##
+enable_uart=1
+
+################################################################################
+##  Device Tree Settings
+################################################################################
+
+dtparam=random=on
+dtparam=watchdog=on
+dtparam=audio=on
+dtparam=i2c0=on
+dtparam=i2c1=on
+dtparam=spi=on
+
+#
+# newracom
+#
+# dtoverlay=pi3-disable-bt
+# dtoverlay=pi3-disable-wifi
+# dtoverlay=pi3-disable-spidev

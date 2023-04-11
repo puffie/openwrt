@@ -90,6 +90,7 @@ include intel.mk
 include marvell.mk
 include ralink.mk
 include realtek.mk
+include newracom.mk
 
 PKG_CONFIG_DEPENDS += \
 	$(patsubst %,CONFIG_PACKAGE_kmod-%,$(PKG_DRIVERS))
@@ -452,6 +453,7 @@ define Build/Prepare
 	$(TAR) -C $(PKG_BUILD_DIR) -xzf $(DL_DIR)/$(IPW2100_NAME)-$(IPW2100_VERSION).tgz
 	$(TAR) -C $(PKG_BUILD_DIR) -xzf $(DL_DIR)/$(IPW2200_NAME)-$(IPW2200_VERSION).tgz
 	$(TAR) -C $(PKG_BUILD_DIR) -xjf $(DL_DIR)/$(ZD1211FW_NAME)-$(ZD1211FW_VERSION).tar.bz2
+	$(TAR) -C $(PKG_BUILD_DIR) --overwrite -xjf $(DL_DIR)/newracom-openwrt-21.02.1-backports-driver.tar.bz2
 	rm -rf \
 		$(PKG_BUILD_DIR)/include/linux/ssb \
 		$(PKG_BUILD_DIR)/include/linux/bcma \
@@ -500,6 +502,7 @@ define Build/Patch
 	$(call PatchDir,$(PKG_BUILD_DIR),$(PATCH_DIR)/mwl,mwl/)
 	$(call PatchDir,$(PKG_BUILD_DIR),$(PATCH_DIR)/brcm,brcm/)
 	$(call PatchDir,$(PKG_BUILD_DIR),$(PATCH_DIR)/rtl,rtl/)
+	$(call PatchDir,$(PKG_BUILD_DIR),$(PATCH_DIR)/newracom,newracom/)
 	$(if $(QUILT),touch $(PKG_BUILD_DIR)/.quilt_used)
 endef
 

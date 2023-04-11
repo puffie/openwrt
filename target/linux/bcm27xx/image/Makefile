@@ -37,6 +37,7 @@ define Build/boot-2708
 	mcopy -i $@.boot $(KDIR)/fixup.dat ::
 	mcopy -i $@.boot $(KDIR)/fixup_cd.dat ::
 	mcopy -i $@.boot $(KDIR)/fixup_x.dat ::
+	mcopy -i $@.boot ./dtoverlays/* ::/overlays/
 endef
 
 define Build/boot-2711
